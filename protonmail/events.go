@@ -15,6 +15,7 @@ const (
 type Event struct {
 	ID       string `json:"EventID"`
 	Refresh  EventRefresh
+	More     int // 1 when more events are waiting after this one
 	Messages []*EventMessage
 	Contacts []*EventContact
 	//ContactEmails

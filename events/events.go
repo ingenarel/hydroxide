@@ -47,6 +47,12 @@ func (r *Receiver) receiveEvents() {
 			break
 		}
 
+		// Events come in pages: fetch the rest now rather than one page per
+		// poll interval
+		if event.More == 1 {
+			continue
+		}
+
 		select {
 		case <-t.C:
 		case <-r.poll:
